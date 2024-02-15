@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
+use App\Models\Project;
 class ProjectController extends Controller
 {
     public function __construct()
@@ -35,16 +35,16 @@ class ProjectController extends Controller
     {
         //
         try {
-            $project = new Project();
-            $project->name = $request->name;
-            $project->description = $request->description;
-            $project->start_date = $request->start_date;
-            $project->end_date = $request->end_date;
-            $project->status = $request->status;
-            $project->save();
-            return redirect('home');
+            $data_insert = Project::create([
+                    'name' => $request->name,
+                    'description' => $request->description,
+                    'start_date' => $request->start_date,
+                    'end_date' => $request->end_date,
+                    'status' => $request->status,
+                ]);
+            return redirect()->route('new.project')->with('success','Project created successfully');
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            return redirect()->route('new.project')->with('failed','Project creation failed');
         }
     }
 

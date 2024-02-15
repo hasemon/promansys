@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Create Project') }}</div>
                     <div class="card-body">
-                        <form action="/create_project" method="POST">
+                        <form action="{{route('store.project')}}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name:</label>
@@ -40,3 +40,20 @@
         </div>
     </div>
 @endsection
+
+@section('footerScript')
+    @if(Session::has('success'))
+        <script type="text/javascript">
+            $(function() {
+                toastr.success("{{ Session::get('success') }}");
+            })
+        </script>
+    @endif
+    @if(Session::has('fail'))
+        <script type="text/javascript">
+            $(function() {
+                toastr.error("{{ Session::get('fail') }}");
+            })
+        </script>
+    @endif
+@stop
