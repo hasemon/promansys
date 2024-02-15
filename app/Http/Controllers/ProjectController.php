@@ -48,12 +48,20 @@ class ProjectController extends Controller
         }
     }
 
+    public function list_project()
+    {
+        //
+        $projects = Project::all();
+        return view('project.list_project',compact('projects'));
+    }
+
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
         //
+
     }
 
     /**

@@ -49,10 +49,10 @@
             })
         </script>
     @endif
-    @if(Session::has('fail'))
+    @if(Session::has('failed'))
         <script type="text/javascript">
             $(function() {
-                toastr.error("{{ Session::get('fail') }}");
+                toastr.error("{{ Session::get('failed') }}");
             })
         </script>
     @endif
