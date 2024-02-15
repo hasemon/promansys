@@ -22,10 +22,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand fw-bold" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand text-success" href="{{ route('list.project') }}">
+                <a class="navbar-brand text-primary" href="{{ route('list.project') }}">
                     Project list
                 </a>
                 <a class="navbar-brand text-primary" href="{{ route('new.project') }}">

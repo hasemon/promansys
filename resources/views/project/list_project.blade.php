@@ -32,6 +32,9 @@
                                     <td>{{ $project->status }}</td>
                                     <td>{{ $project->created_at }}</td>
                                     <td>{{ $project->updated_at }}</td>
+                                    <td>
+                                        <a href="{{route('add.task', $project->id)}}" class="btn btn-primary">Add</a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>
