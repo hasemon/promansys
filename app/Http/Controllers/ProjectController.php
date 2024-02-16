@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Http\Request;
+
 class ProjectController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -36,15 +38,15 @@ class ProjectController extends Controller
         //
         try {
             $data_insert = Project::create([
-                    'name' => $request->name,
-                    'description' => $request->description,
-                    'start_date' => $request->start_date,
-                    'end_date' => $request->end_date,
-                    'status' => $request->status,
-                ]);
-            return redirect()->route('new.project')->with('success','Project created successfully');
+                'name' => $request->name,
+                'description' => $request->description,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'status' => $request->status,
+            ]);
+            return redirect()->route('new.project')->with('success', 'Project created successfully');
         } catch (\Exception $e) {
-            return redirect()->route('new.project')->with('failed','Project creation failed');
+            return redirect()->route('new.project')->with('failed', 'Project creation failed');
         }
     }
 
@@ -52,7 +54,7 @@ class ProjectController extends Controller
     {
         //
         $projects = Project::all();
-        return view('project.list_project',compact('projects'));
+        return view('project.list_project', compact('projects'));
     }
 
     /**
@@ -84,8 +86,11 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete_project(string $id)
     {
-        //
+        //destroy id
+        $project = Project::find($id);
+        $project->delete();
+        return redirect()->route('list.project')->with('success', 'Project deleted successfully');
     }
 }
