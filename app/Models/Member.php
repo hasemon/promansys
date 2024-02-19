@@ -5,21 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Member extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'description',
-        'start_date',
-        'end_date',
-        'status'
+        'details',
+        'status',
+        'project_id'
     ];
 
-    public function members()
+    public function project()
     {
-        return $this->hasMany(Member::class);
+        return $this->belongsTo(Project::class);
     }
 
 }

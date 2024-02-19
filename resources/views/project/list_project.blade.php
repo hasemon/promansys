@@ -18,7 +18,8 @@
                                 <th>Status</th>
                                 <th>Created At</th>
                                 <th>Updated At</th>
-                                <th>Action</th>
+                                <th>Actions</th>
+                                <th>Members</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -34,12 +35,14 @@
                                     <td>{{ $project->updated_at }}</td>
                                     <td>
                                         <a href="{{route('add.task', $project->id)}}" class="btn btn-primary me-2">Add</a>
-                                        <form method="POST" action="{{route('delete.project', $project->id)}}" class="d-inline">
+                                        <form method="POST" action="{{route('delete.project', $project->id)}}" class="d-inline me-2">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
-
+                                    </td>
+                                    <td>
+                                        <a href="{{route('list.members', $project->id)}}" class="btn btn-outline-success me-2">Members</a>
                                     </td>
                                 </tr>
                             @endforeach
