@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Project;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -93,4 +93,11 @@ class ProjectController extends Controller
         $project->delete();
         return redirect()->route('list.project')->with('success', 'Project deleted successfully');
     }
+
+    public function pdf_generate()
+    {
+        $projects = Project::all();
+        return PDF::loadView('project.pdf_generate',compact('projects'))->download('document.pdf');
+    }
+
 }

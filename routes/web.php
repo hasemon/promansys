@@ -21,3 +21,5 @@ Route::post('/add-task/{id}', [App\Http\Controllers\TaskController::class, 'stor
 
 Route::get('/list-members/{id}', [App\Http\Controllers\MemberController::class, 'list_members'])->name('list.members');
 Route::post('/list-members/{id}', [App\Http\Controllers\MemberController::class, 'store_member'])->name('store.member');
+
+Route::get('/pdf-generate', [App\Http\Controllers\ProjectController::class, 'pdf_generate'])->name('pdf.generate');

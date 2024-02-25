@@ -34,7 +34,7 @@
                                     <td>{{ $project->created_at }}</td>
                                     <td>{{ $project->updated_at }}</td>
                                     <td>
-                                        <a href="{{route('add.task', $project->id)}}" class="btn btn-primary me-2">Add</a>
+                                        <a href="{{route('add.task', $project->id)}}" class="btn btn-primary me-2">Add Task</a>
                                         <form method="POST" action="{{route('delete.project', $project->id)}}" class="d-inline me-2">
                                             @csrf
                                             @method('DELETE')
